@@ -1,6 +1,5 @@
 from flask import Flask, jsonify,request
 app = Flask(__name__)
-#Creating a RESTFul API With Flask [1 of 4] - Get Requests
 
 languages = [{'name': 'Python'}, {'name': 'go'}, {'name': 'java'} ]
 
@@ -10,7 +9,7 @@ def test():
 
 @app.route('/lang/', methods=['GET'])
 def returnAll():
-	return jsonify({'languagesssss' : languages})
+	return jsonify({'list_languages' : languages})
 
 @app.route('/lang/<name>', methods=['GET'])
 def returnOne(name):
@@ -22,10 +21,10 @@ def addLang():
 	#creates dictionary name is key, json'ed returned from reuqest name is value
 	#extracts json object send
 	languages.append(language)
-	#append your add the the globa list
-	return jsonify({'languagesssss' : languages})
+	#append your add the the global list
+	return jsonify({'list_languages' : languages})
 @app.route('/lang/<name>', methods=['PUT'])
-def editJava(name):
+def editLang(name):
 	languages[2]['name'] = request.json['name']
 	return jsonify({'languages' :languages[2]})
 
